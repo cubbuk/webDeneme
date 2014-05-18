@@ -6,29 +6,36 @@
 
 package net.mc.webdeneme;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author mehmet
  */
 @Named
-@RequestScoped
-public class MainManagedBean {
+@SessionScoped
+public class MainPageBean implements Serializable{
     
     private String name;
+    private int counter;
 
     /**
      * Creates a new instance of MainManagedBean
      */
-    public MainManagedBean() {
+    public MainPageBean() {
     }
     
     @PostConstruct
     public void initBean(){
-        this.name = "Mehmet";
+        this.name = "";
+        this.counter = 0;
+    }
+    
+    public void incrementCounter(){
+        this.counter++;
     }
 
     public String getName() {
@@ -37,6 +44,10 @@ public class MainManagedBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCounter() {
+        return counter;
     }
     
 }

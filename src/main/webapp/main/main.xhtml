@@ -1,12 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputScript library="js" name="jquery-1.11.1.min.js"/>
+        <h:outputScript library="js" name="bootstrap.min.js"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
     <h:body>
-        Hello #{mainManagedBean.name}
+        <div class="row">
+            <div class="col-md-4">
+                <div class="alert alert-success">
+                    <h3><h:outputText styleClass="" id="helloName" value="Hello #{mainPageBean.name}"/></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <h:form role="form">
+                    <div class="form-group">
+                        <label for="name">Counter</label>
+                        <h:inputText id="name" styleClass="form-control" value="#{mainPageBean.name}">
+                            <f:ajax event="keyup blur" render=":helloName"/>
+                        </h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="counter">Counter</label>
+                        <h:inputText disabled="true" id="counter" styleClass="form-control" value="#{mainPageBean.counter}"/>
+                    </div>
+                    <h:commandButton type="submit" 
+                                     styleClass="btn btn-default pull-right" 
+                                     value="Increase" 
+                                     actionListener="#{mainPageBean.incrementCounter()}">
+                        <f:ajax render="@form"/>
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
     </h:body>
 </html>
 
