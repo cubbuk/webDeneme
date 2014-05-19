@@ -19,7 +19,6 @@ import javax.inject.Named;
 @SessionScoped
 public class MainPageBean implements Serializable{
     
-    //adsasd
     private String name;
     private int counter;
 
