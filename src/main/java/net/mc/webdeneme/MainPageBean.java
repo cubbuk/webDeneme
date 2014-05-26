@@ -6,9 +6,11 @@
 
 package net.mc.webdeneme;
 
+import net.mc.deneme.Deneme;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -18,7 +20,8 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class MainPageBean implements Serializable{
-    
+    @Inject
+    private Deneme deneme;
     private String name;
     private int counter;
 
@@ -32,6 +35,7 @@ public class MainPageBean implements Serializable{
     public void initBean(){
         this.name = "";
         this.counter = 0;
+        System.out.println(deneme.getMsg());
     }
     
     public void incrementCounter(){

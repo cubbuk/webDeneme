@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="name">Counter</label>
                         <h:inputText id="name" styleClass="form-control" value="#{mainPageBean.name}">
-                            <f:ajax event="keyup blur" render=":helloName"/>
+                            <f:ajax event="blur" render=":helloName"/>
                         </h:inputText>
                     </div>
                     <div class="form-group">
